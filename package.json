@@ -1,9 +1,9 @@
 {
-  "name": "ionic4-start-theme",
-  "description": "Ionic 4 Start Theme",
+  "name": "easy-search",
+  "description": "Easy Search",
   "version": "1.0.0",
-  "author": "Ionic Theme",
-  "homepage": "https://ionictheme.com",
+  "author": "Édipo Juan",
+  "homepage": "https://easy-search.com.br",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
