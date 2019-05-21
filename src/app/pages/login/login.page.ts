@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  ToastController,
+  AlertController,
+  LoadingController
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
@@ -17,22 +23,19 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
-
     this.onLoginForm = this.formBuilder.group({
-      'email': [null, Validators.compose([
-        Validators.required
-      ])],
-      'password': [null, Validators.compose([
-        Validators.required
-      ])]
+      email: [null, Validators.compose([Validators.required])],
+      password: [null, Validators.compose([Validators.required])]
     });
+
+    this.goToHome();
   }
 
   async forgotPass() {
@@ -54,7 +57,8 @@ export class LoginPage implements OnInit {
           handler: () => {
             console.log('Confirm Cancel');
           }
-        }, {
+        },
+        {
           text: 'Confirm',
           handler: async () => {
             const loader = await this.loadingCtrl.create({
@@ -62,7 +66,7 @@ export class LoginPage implements OnInit {
             });
 
             loader.present();
-            loader.onWillDismiss().then(async l => {
+            loader.onWillDismiss().then(async (l) => {
               const toast = await this.toastCtrl.create({
                 showCloseButton: true,
                 message: 'Email was sended successfully.',
@@ -80,7 +84,6 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  // // //
   goToRegister() {
     this.navCtrl.navigateRoot('/register');
   }
@@ -88,5 +91,4 @@ export class LoginPage implements OnInit {
   goToHome() {
     this.navCtrl.navigateRoot('/home-results');
   }
-
 }
