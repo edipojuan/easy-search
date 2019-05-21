@@ -21,7 +21,8 @@ const routes: Routes = [
     path: 'home-results',
     loadChildren:
       './pages/home-results/home-results.module#HomeResultsPageModule'
-  }
+  },  { path: 'item-details', loadChildren: './pages/modal/item-details/item-details.module#ItemDetailsPageModule' }
+
 ];
 
 @NgModule({

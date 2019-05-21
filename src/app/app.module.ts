@@ -14,10 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 // Modal Pages
 import { ImagePageModule } from './pages/modal/image/image.module';
 import { SearchFilterPageModule } from './pages/modal/search-filter/search-filter.module';
+import { ItemDetailsPageModule } from './pages/modal/item-details/item-details.module';
 
 // Components
 import { NotificationsComponent } from './components/notifications/notifications.component';
-
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -28,7 +28,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     AppRoutingModule,
     HttpClientModule,
     ImagePageModule,
-    SearchFilterPageModule
+    SearchFilterPageModule,
+    ItemDetailsPageModule
   ],
   entryComponents: [NotificationsComponent],
   providers: [
@@ -38,5 +39,4 @@ import { NotificationsComponent } from './components/notifications/notifications
   ],
   bootstrap: [AppComponent]
 })
-
 export class AppModule {}

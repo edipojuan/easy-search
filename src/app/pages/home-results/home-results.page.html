@@ -16,7 +16,8 @@
     </ion-buttons> -->
   </ion-toolbar>
   <ion-toolbar color="dark">
-    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
+    <!-- (ionInput)="find()" [(ngModel)]="searchKey" -->
+    <ion-searchbar (ionInput)="onSearchChange($event.target.value)"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
         <ion-icon name="options"></ion-icon>
@@ -44,12 +45,23 @@
     </ion-item>
   </ion-card> -->
 
-  <ion-card class="bg-white">
+  <ion-card *ngFor="let item of itens" (click)="presentItem(item)">
+    <ion-card-header>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{item.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{item.description}}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card class="bg-white">
     <ion-img [src]="themeCover"></ion-img>
     <ion-button expand="full" color="dark" (click)="presentImage(themeCover)" no-margin>
       Modal 1: Modal Image
     </ion-button>
-  </ion-card>
+  </ion-card> -->
 
   <!-- <ion-button margin shape="round" expand="full" color="secondary" (click)="searchFilter()">
     Modal 2: Search Filter

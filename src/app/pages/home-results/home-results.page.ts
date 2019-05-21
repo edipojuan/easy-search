@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   AlertController,
   MenuController,
   ToastController,
   PopoverController,
-  ModalController } from '@ionic/angular';
+  ModalController
+} from '@ionic/angular';
 
 // Modals
 import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 import { ImagePage } from './../modal/image/image.page';
+import { ItemDetailsPage } from './../modal/item-details/item-details.page';
+
 // Call notifications test by Popover and Custom Component.
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
+
+import { MenuService } from './../../services/menu.service';
 
 @Component({
   selector: 'app-home-results',
   templateUrl: './home-results.page.html',
   styleUrls: ['./home-results.page.scss']
 })
-export class HomeResultsPage {
-  searchKey = '';
+export class HomeResultsPage implements OnInit {
+  // searchKey = '';
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
+
+  itens = [];
+  timeout;
 
   constructor(
     public navCtrl: NavController,
@@ -29,13 +37,30 @@ export class HomeResultsPage {
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
-  ) {
+    public toastCtrl: ToastController,
+    public menuService: MenuService
+  ) {}
 
+  ngOnInit(): void {
+    this.find();
   }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+  }
+
+  onSearchChange(searchKey: string) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => this.find({ title: searchKey }), 800);
+  }
+
+  find(filter: any = null) {
+    this.menuService
+      .find(filter)
+      .subscribe(
+        (response) => (this.itens = response),
+        (error) => console.log(error)
+      );
   }
 
   settings() {
@@ -51,12 +76,12 @@ export class HomeResultsPage {
           name: 'location',
           placeholder: 'Enter your new Location',
           type: 'text'
-        },
+        }
       ],
       buttons: [
         {
           text: 'Cancel',
-          handler: data => {
+          handler: (data) => {
             console.log('Cancel clicked');
           }
         },
@@ -81,10 +106,15 @@ export class HomeResultsPage {
     changeLocation.present();
   }
 
-  async searchFilter () {
+  async searchFilter() {
     const modal = await this.modalCtrl.create({
       component: SearchFilterPage
     });
+
+    modal.onDidDismiss().then((filter) => {
+      console.log(filter);
+    });
+
     return await modal.present();
   }
 
@@ -92,6 +122,14 @@ export class HomeResultsPage {
     const modal = await this.modalCtrl.create({
       component: ImagePage,
       componentProps: { value: image }
+    });
+    return await modal.present();
+  }
+
+  async presentItem(item: any) {
+    const modal = await this.modalCtrl.create({
+      component: ItemDetailsPage,
+      componentProps: { value: item }
     });
     return await modal.present();
   }
@@ -105,5 +143,4 @@ export class HomeResultsPage {
     });
     return await popover.present();
   }
-
 }
