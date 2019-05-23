@@ -31,6 +31,9 @@ export class HomeResultsPage implements OnInit {
   itens = [];
   timeout;
 
+  categories = [];
+  tags = [];
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -43,6 +46,9 @@ export class HomeResultsPage implements OnInit {
 
   ngOnInit(): void {
     this.find();
+
+    this.getCategories();
+    this.getTags();
   }
 
   ionViewWillEnter() {
@@ -110,7 +116,8 @@ export class HomeResultsPage implements OnInit {
 
   async searchFilter() {
     const modal = await this.modalCtrl.create({
-      component: SearchFilterPage
+      component: SearchFilterPage,
+      componentProps: { categories: this.categories, tags: this.tags }
     });
 
     modal.onDidDismiss().then((filter) => {
@@ -144,5 +151,23 @@ export class HomeResultsPage implements OnInit {
       showBackdrop: true
     });
     return await popover.present();
+  }
+
+  getCategories() {
+    this.menuService
+      .getCaterories()
+      .subscribe(
+        (response) => (this.categories = response),
+        (error) => console.log(error)
+      );
+  }
+
+  getTags() {
+    this.menuService
+      .getTags()
+      .subscribe(
+        (response) => (this.tags = response),
+        (error) => console.log(error)
+      );
   }
 }

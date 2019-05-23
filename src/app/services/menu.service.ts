@@ -8,12 +8,12 @@ import { tap, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MenuService {
-  apiUrl = 'assets/data/menus.json';
+  apiUrl = 'assets/data';
 
   constructor(public http: HttpClient) {}
 
   find(searchFilter: any = null): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/menus.json`).pipe(
       map((menus) =>
         menus.filter((menu) => this.filterValue(menu, searchFilter))
       ),
@@ -32,5 +32,13 @@ export class MenuService {
     });
 
     return condition;
+  }
+
+  getCaterories(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/categories.json`);
+  }
+
+  getTags(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/tags.json`);
   }
 }
