@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-import menus from './mocks/menus.mock';
+import { Observable } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  constructor() {}
+  apiUrl = 'assets/data/menus.json';
 
-  find(filter: any = null) {
-    return filter ? this.findCondition(filter) : of(menus);
+  constructor(public http: HttpClient) {}
+
+  find(searchFilter: any = null): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map((menus) =>
+        menus.filter((menu) => this.filterValue(menu, searchFilter))
+      ),
+      tap((menus) => console.log(menus))
+    );
   }
 
-  findCondition(filter: any) {
-    return of(
-      menus.filter((menu) => {
-        let condition = true;
+  filterValue(menu: any, searchFilter: any): boolean {
+    let condition = true;
 
-        Object.keys(filter).forEach((f) => {
-          if (menu[f].indexOf(filter[f]) < 0) {
-            condition = false;
-            return;
-          }
-        });
+    Object.keys(searchFilter).forEach((f) => {
+      if (menu[f].indexOf(searchFilter[f]) < 0) {
+        condition = false;
+        return;
+      }
+    });
 
-        return condition;
-      })
-    );
+    return condition;
   }
 }

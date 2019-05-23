@@ -51,12 +51,14 @@ export class HomeResultsPage implements OnInit {
 
   onSearchChange(searchKey: string) {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.find({ title: searchKey }), 800);
+    this.timeout = setTimeout(() => this.find({ title: searchKey }), 600);
   }
 
-  find(filter: any = null) {
+  find(searchFilter: any = {}) {
+    // searchFilter = { ...searchFilter, tags: 'Promoção' };
+
     this.menuService
-      .find(filter)
+      .find(searchFilter)
       .subscribe(
         (response) => (this.itens = response),
         (error) => console.log(error)

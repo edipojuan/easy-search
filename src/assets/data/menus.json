@@ -1,0 +1,61 @@
+[{
+    "_id": {
+      "$oid": "5beba2e92b2222416899a9d0"
+    },
+    "id": 1,
+    "thumbnail": "assets/img/restaurants/thumbs/arena-kids.jpg",
+    "images": [
+      "assets/img/restaurants/arena-kids2.jpg",
+      "assets/img/restaurants/arena-kids1.jpg"
+    ],
+    "title": "Item 1",
+    "description": "description item 1 preço 10",
+    "price": 10,
+    "categories": ["Category 1", "Category 2"],
+    "tags": "Promoção",
+    "createdAt": {
+      "$date": "2018-11-14T04:22:01.229Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5beba2e92b2222416899a9d0"
+    },
+    "id": 2,
+    "thumbnail": "assets/img/restaurants/thumbs/arena-kids.jpg",
+    "images": [
+      "assets/img/restaurants/arena-kids2.jpg",
+      "assets/img/restaurants/arena-kids1.jpg"
+    ],
+    "title": "Item 2",
+    "description": "description item 2 preço 20",
+    "price": 20.5,
+    "categories": ["Category 2"],
+    "tags": "Promoção",
+    "createdAt": {
+      "$date": "2018-11-14T04:22:01.229Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5beba2e92b2222416899a9d0"
+    },
+    "id": 3,
+    "thumbnail": "assets/img/restaurants/thumbs/arena-kids.jpg",
+    "images": [
+      "assets/img/restaurants/arena-kids2.jpg",
+      "assets/img/restaurants/arena-kids1.jpg"
+    ],
+    "title": "Item 3",
+    "description": "description item 3 preço 30",
+    "price": 30,
+    "categories": ["Category 1"],
+    "tags": "Exclusivo",
+    "createdAt": {
+      "$date": "2018-11-14T04:22:01.229Z"
+    },
+    "__v": 0
+  }
+]
