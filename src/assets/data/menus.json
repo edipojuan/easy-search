@@ -12,7 +12,8 @@
     "description": "description item 1 preço 10",
     "price": 10,
     "categories": ["Category 1", "Category 2"],
-    "tags": "Promoção",
+    "category": "Category 1",
+    "tag": "Promoção 1",
     "createdAt": {
       "$date": "2018-11-14T04:22:01.229Z"
     },
@@ -32,7 +33,8 @@
     "description": "description item 2 preço 20",
     "price": 20.5,
     "categories": ["Category 2"],
-    "tags": "Promoção",
+    "category": "Category 2",
+    "tag": "Novo 2",
     "createdAt": {
       "$date": "2018-11-14T04:22:01.229Z"
     },
@@ -52,7 +54,8 @@
     "description": "description item 3 preço 30",
     "price": 30,
     "categories": ["Category 1"],
-    "tags": "Exclusivo",
+    "category": "Category 3",
+    "tag": "Mais Vendido 3",
     "createdAt": {
       "$date": "2018-11-14T04:22:01.229Z"
     },

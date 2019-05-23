@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -10,20 +12,32 @@ export class SearchFilterPage implements OnInit {
   @Input() categories = [];
   @Input() tags = [];
 
-  public radiusmiles = 1;
-  public minmaxprice = {
-    upper: 500,
-    lower: 1
-  };
-  organizeby: any;
-  dishtype: any;
-  dishnationality: any;
+  form: any;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      title: [null],
+      category: [null],
+      tag: [null],
+      price: [
+        {
+          upper: 500,
+          lower: 1
+        }
+      ]
+    });
+  }
 
   closeModal() {
-    this.modalCtrl.dismiss('testtttt return');
+    this.modalCtrl.dismiss();
+  }
+
+  onSubmit() {
+    this.modalCtrl.dismiss(this.form.value);
   }
 }

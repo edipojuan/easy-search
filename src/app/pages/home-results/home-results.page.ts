@@ -120,8 +120,18 @@ export class HomeResultsPage implements OnInit {
       componentProps: { categories: this.categories, tags: this.tags }
     });
 
-    modal.onDidDismiss().then((filter) => {
-      console.log(filter);
+    modal.onDidDismiss().then((result) => {
+      let filters = {};
+
+      const { data } = result;
+
+      Object.keys(data).forEach((param) => {
+        if (data[param]) {
+          filters = { ...filters, [param]: data[param] };
+        }
+      });
+
+      this.find(filters);
     });
 
     return await modal.present();

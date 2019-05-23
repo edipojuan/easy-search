@@ -25,9 +25,14 @@ export class MenuService {
     let condition = true;
 
     Object.keys(searchFilter).forEach((f) => {
-      if (menu[f].indexOf(searchFilter[f]) < 0) {
-        condition = false;
-        return;
+      if (typeof searchFilter[f] === 'string') {
+        if (menu[f].indexOf(searchFilter[f]) < 0) {
+          condition = false;
+          return;
+        }
+      }
+
+      if (typeof searchFilter[f] === 'object') {
       }
     });
 
