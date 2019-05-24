@@ -57,7 +57,7 @@ export class HomeResultsPage implements OnInit {
 
   onSearchChange(searchKey: string) {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.find({ title: searchKey }), 600);
+    this.timeout = setTimeout(() => this.find({ title: searchKey }), 400);
   }
 
   find(searchFilter: any = {}) {

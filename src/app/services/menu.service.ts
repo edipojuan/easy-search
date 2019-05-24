@@ -26,13 +26,20 @@ export class MenuService {
 
     Object.keys(searchFilter).forEach((f) => {
       if (typeof searchFilter[f] === 'string') {
-        if (menu[f].indexOf(searchFilter[f]) < 0) {
+        if (menu[f].toLowerCase().indexOf(searchFilter[f].toLowerCase()) < 0) {
           condition = false;
           return;
         }
       }
 
       if (typeof searchFilter[f] === 'object') {
+        if (f === 'price') {
+          const { upper, lower } = searchFilter[f];
+          if (menu[f] > upper || menu[f] < lower) {
+            condition = false;
+            return;
+          }
+        }
       }
     });
 
