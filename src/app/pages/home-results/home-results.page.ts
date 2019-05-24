@@ -27,7 +27,7 @@ export class HomeResultsPage implements OnInit {
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 
-  itens = [];
+  results = [];
   timeout;
 
   categories = [];
@@ -63,7 +63,7 @@ export class HomeResultsPage implements OnInit {
     this.menuService
       .find(searchFilter)
       .subscribe(
-        (response) => (this.itens = response),
+        (response) => (this.results = response),
         (err) => console.log(err)
       );
   }
@@ -149,7 +149,7 @@ export class HomeResultsPage implements OnInit {
   async presentItem(item: any) {
     const modal = await this.modalCtrl.create({
       component: ItemDetailsPage,
-      componentProps: { value: item }
+      componentProps: { information: item }
     });
     return await modal.present();
   }

@@ -45,7 +45,31 @@
     </ion-item>
   </ion-card> -->
 
-  <ion-card *ngFor="let item of itens" (click)="presentItem(item)">
+  <ion-list>
+
+    <!-- <ion-item button *ngFor="let item of (results | async)" (click)="presentItem(item)"> -->
+    <ion-item button *ngFor="let item of results" (click)="presentItem(item)">
+      <ion-avatar slot="start">
+        <img [src]="item.thumbnail" *ngIf="item.thumbnail != 'N/A'">
+      </ion-avatar>
+
+      <ion-label text-wrap>
+        <h3>{{ item.title }}</h3>
+        {{ item.category }}
+        <br>
+        {{ item.price }}
+      </ion-label>
+
+      <!-- *ngIf="item.Type == 'movie'" -->
+      <ion-icon slot="end" name="videocam"></ion-icon>
+      <!-- <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type == 'game'" name="logo-game-controller-b"></ion-icon> -->
+
+    </ion-item>
+
+  </ion-list>
+
+  <!-- <ion-card *ngFor="let item of itens" (click)="presentItem(item)">
     <ion-card-header>
       <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
       <ion-card-title>{{item.title}}</ion-card-title>
@@ -54,7 +78,7 @@
     <ion-card-content>
       {{item.description}}
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
   <!-- <ion-card class="bg-white">
     <ion-img [src]="themeCover"></ion-img>

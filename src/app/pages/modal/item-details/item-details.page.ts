@@ -7,7 +7,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./item-details.page.scss']
 })
 export class ItemDetailsPage implements OnInit {
-  @Input() value: any;
+  @Input() information: any;
 
   constructor(private modalCtrl: ModalController) {}
 
