@@ -4,7 +4,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { Pages } from './interfaces/pages';
+import { Pages } from './shared/interfaces/pages';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,6 @@ import { Pages } from './interfaces/pages';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   public appPages: Array<Pages>;
 
   constructor(
@@ -47,10 +46,13 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    }).catch(() => {});
+    this.platform
+      .ready()
+      .then(() => {
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
+      })
+      .catch(() => {});
   }
 
   goToEditProgile() {

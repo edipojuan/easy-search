@@ -1,25 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, Input, Injector } from '@angular/core';
 
 import { ModalController } from '@ionic/angular';
+
+import { BaseForm } from 'src/app/shared/base/base-form';
 
 @Component({
   selector: 'app-search-filter',
   templateUrl: './search-filter.page.html',
   styleUrls: ['./search-filter.page.scss']
 })
-export class SearchFilterPage implements OnInit {
+export class SearchFilterPage extends BaseForm {
   @Input() categories = [];
   @Input() tags = [];
 
-  form: any;
+  constructor(private modalCtrl: ModalController, injector: Injector) {
+    super(injector);
+  }
 
-  constructor(
-    private modalCtrl: ModalController,
-    private formBuilder: FormBuilder
-  ) {}
-
-  ngOnInit() {
+  onInit() {
     this.form = this.formBuilder.group({
       title: [null],
       category: [null],
@@ -37,7 +35,7 @@ export class SearchFilterPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  onSubmit() {
+  submit(): void {
     this.modalCtrl.dismiss(this.form.value);
   }
 }
