@@ -13,12 +13,13 @@ export class MenuService {
   constructor(public http: HttpClient) {}
 
   find(searchFilter: any = null): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/menus.json`).pipe(
-      map((menus) =>
-        menus.filter((menu) => this.filterValue(menu, searchFilter))
-      ),
-      tap((menus) => console.log(menus))
-    );
+    return this.http
+      .get<any[]>(`${this.apiUrl}/menus.json`)
+      .pipe(
+        map((menus) =>
+          menus.filter((menu) => this.filterValue(menu, searchFilter))
+        )
+      );
   }
 
   filterValue(menu: any, searchFilter: any): boolean {

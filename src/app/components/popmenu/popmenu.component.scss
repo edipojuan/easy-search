@@ -1,4 +1,4 @@
-// Popup Menu //
+// Popup Menu
 .popup-menu-overlay {
     position: fixed;
     top: 0;
@@ -10,8 +10,9 @@
     visibility: hidden;
     -webkit-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
-    background-image: -webkit-linear-gradient(rgba(79,36,172, .85) 0%, rgba(79,36,172, .65) 100%);
-    background-image: linear-gradient(rgba(79,36,172, .85) 0%, rgba(79,36,172, .65) 100%);
+    background-image: -webkit-linear-gradient(rgba(79, 36, 172, .85) 0%, rgba(79, 36, 172, .65) 100%);
+    background-image: linear-gradient(rgba(79, 36, 172, .85) 0%, rgba(79, 36, 172, .65) 100%);
+
     &.in {
         opacity: 1;
         visibility: visible;
@@ -30,6 +31,7 @@
     z-index: 101;
     -webkit-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
+
     &.out {
         opacity: 0;
         visibility: hidden;
@@ -37,6 +39,7 @@
         transform: scale(0);
         -webkit-transition: all .15s ease-in-out;
         transition: all .15s ease-in-out;
+
         &:before {
             -webkit-transition: all .15s ease-in-out;
             transition: all .15s ease-in-out;
@@ -75,6 +78,7 @@
     -moz-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+
     .popup-menu-item {
         margin: auto;
         -webkit-box-flex: 1 0 30%;
@@ -100,11 +104,13 @@
         opacity: 0;
         -webkit-transition: all .25s ease-in-out;
         transition: all .25s ease-in-out;
+
         ion-icon {
             margin: 0 auto;
             text-align: center;
             color: #fff;
         }
+
         span {
             padding: 0;
             margin: 0 0 auto 0;
@@ -115,24 +121,28 @@
             font-weight: 500;
             line-height: 18px;
         }
+
         &:active {
             i {
-                color: rgb(221,65,53);
+                color: rgb(221, 65, 53);
                 -webkit-transition: all .15s;
                 transition: all 0.15s;
             }
+
             span {
-                color: rgb(221,65,53);
+                color: rgb(221, 65, 53);
                 -webkit-transition: all .15s;
                 transition: all .15s;
             }
         }
     }
+
     &.in {
         -webkit-transform: scale(1);
         transform: scale(1);
         -webkit-transition-delay: 0s;
         transition-delay: 0s;
+
         .popup-menu-item {
             -webkit-transform: scale(1);
             transform: scale(1);

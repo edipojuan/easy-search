@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, MenuController, LoadingController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  LoadingController
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  styleUrls: ['./register.page.scss']
 })
 export class RegisterPage implements OnInit {
   public onRegisterForm: FormGroup;
@@ -15,7 +19,7 @@ export class RegisterPage implements OnInit {
     public menuCtrl: MenuController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -23,15 +27,9 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.onRegisterForm = this.formBuilder.group({
-      'fullName': [null, Validators.compose([
-        Validators.required
-      ])],
-      'email': [null, Validators.compose([
-        Validators.required
-      ])],
-      'password': [null, Validators.compose([
-        Validators.required
-      ])]
+      fullName: [null, Validators.compose([Validators.required])],
+      email: [null, Validators.compose([Validators.required])],
+      password: [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -46,7 +44,6 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  // // //
   goToLogin() {
     this.navCtrl.navigateRoot('/');
   }

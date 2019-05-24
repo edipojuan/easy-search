@@ -24,7 +24,6 @@ import { MenuService } from './../../services/menu.service';
   styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage implements OnInit {
-  // searchKey = '';
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 
@@ -61,13 +60,11 @@ export class HomeResultsPage implements OnInit {
   }
 
   find(searchFilter: any = {}) {
-    // searchFilter = { ...searchFilter, tags: 'Promoção' };
-
     this.menuService
       .find(searchFilter)
       .subscribe(
         (response) => (this.itens = response),
-        (error) => console.log(error)
+        (err) => console.log(err)
       );
   }
 
@@ -168,7 +165,7 @@ export class HomeResultsPage implements OnInit {
       .getCaterories()
       .subscribe(
         (response) => (this.categories = response),
-        (error) => console.log(error)
+        (err) => console.log(err)
       );
   }
 
@@ -177,7 +174,7 @@ export class HomeResultsPage implements OnInit {
       .getTags()
       .subscribe(
         (response) => (this.tags = response),
-        (error) => console.log(error)
+        (err) => console.log(err)
       );
   }
 }
