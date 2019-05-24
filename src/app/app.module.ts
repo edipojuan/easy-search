@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import { InterceptorModule } from './shared/interceptors/interceptor.module';
 
 // Modal Pages
 import { ImagePageModule } from './pages/modal/image/image.module';
@@ -29,7 +31,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     HttpClientModule,
     ImagePageModule,
     SearchFilterPageModule,
-    ItemDetailsPageModule
+    ItemDetailsPageModule,
+    InterceptorModule
   ],
   entryComponents: [NotificationsComponent],
   providers: [

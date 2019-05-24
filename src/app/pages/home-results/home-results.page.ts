@@ -118,9 +118,13 @@ export class HomeResultsPage implements OnInit {
     });
 
     modal.onDidDismiss().then((result) => {
-      let filters = {};
-
       const { data } = result;
+
+      if (!data) {
+        return;
+      }
+
+      let filters = {};
 
       Object.keys(data).forEach((param) => {
         if (data[param]) {
