@@ -27,18 +27,20 @@
       {{ information.description }}
 
       <ion-item lines="none">
-        <ion-icon name="star-half" slot="start"></ion-icon>
+        <ion-icon name="logo-buffer" slot="start"></ion-icon>
         <ion-label>{{ information.category }}</ion-label>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-icon name="clipboard" slot="start"></ion-icon>
+        <ion-icon name="bookmark" slot="start"></ion-icon>
         <ion-label text-wrap>{{ information.tag }}</ion-label>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-icon name="contacts" slot="start"></ion-icon>
-        <ion-label text-wrap>{{ information.price }}</ion-label>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+        <ion-label text-wrap>
+          {{ information.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) }}
+        </ion-label>
       </ion-item>
 
       <!-- (click)="openWebsite()" -->

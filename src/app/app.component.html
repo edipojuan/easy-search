@@ -40,19 +40,24 @@
 
       <ion-content class="bg-profile">
         <ion-list>
-          <ion-list-header color="dark">
-            <ion-label>Menu</ion-label>
-          </ion-list-header>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerLink]="[p.url]" color="primary">
-              <ion-icon slot="start" [name]="p.icon" color="light"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+          <div *ngFor="let page of appPages">
+            <ion-list-header color="dark">
+              <ion-label>{{ page.group}}</ion-label>
+            </ion-list-header>
+
+            <ion-menu-toggle auto-hide="false" *ngFor="let item of page.itens">
+              <ion-item [routerLink]="[item.url]" color="primary">
+                <ion-icon slot="start" [name]="item.icon" color="light"></ion-icon>
+                <ion-label>
+                  {{item.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </div>
+
         </ion-list>
+
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

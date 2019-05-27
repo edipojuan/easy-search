@@ -1,6 +1,9 @@
 export interface Pages {
-  title: string;
-  url: any;
-  direct?: string;
-  icon?: string;
+  group: string;
+  itens: Array<{
+    title: string;
+    url: any;
+    direct?: string;
+    icon?: string;
+  }>;
 }

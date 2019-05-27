@@ -22,23 +22,50 @@ export class AppComponent {
   ) {
     this.appPages = [
       {
-        title: 'Home',
-        url: '/home-results',
-        direct: 'root',
-        icon: 'home'
+        group: 'Menu',
+        itens: [
+          {
+            title: 'Home',
+            url: '/home-results',
+            direct: 'root',
+            icon: 'home'
+          },
+          {
+            title: 'About',
+            url: '/about',
+            direct: 'forward',
+            icon: 'information-circle-outline'
+          },
+          {
+            title: 'App Settings',
+            url: '/settings',
+            direct: 'forward',
+            icon: 'cog'
+          }
+        ]
       },
       {
-        title: 'About',
-        url: '/about',
-        direct: 'forward',
-        icon: 'information-circle-outline'
-      },
-
-      {
-        title: 'App Settings',
-        url: '/settings',
-        direct: 'forward',
-        icon: 'cog'
+        group: 'Ajuda',
+        itens: [
+          {
+            title: 'Sobre',
+            url: '/home-results',
+            direct: 'root',
+            icon: 'information-circle-outline'
+          },
+          {
+            title: 'Contato',
+            url: '/about',
+            direct: 'forward',
+            icon: 'call'
+          },
+          {
+            title: 'Como Funciona',
+            url: '/settings',
+            direct: 'forward',
+            icon: 'albums'
+          }
+        ]
       }
     ];
 

@@ -8,12 +8,12 @@
         <ion-text color="light" class="fw700">Easy Search</ion-text>
       </ion-text>
     </ion-title>
-    <!-- <ion-buttons slot="end">
+    <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="notifications()">
         <ion-icon name="notifications"></ion-icon>
         <ion-badge color="dark" slot="end">2</ion-badge>
       </ion-button>
-    </ion-buttons> -->
+    </ion-buttons>
   </ion-toolbar>
   <ion-toolbar color="dark">
     <!-- (ionInput)="find()" [(ngModel)]="searchKey" -->
@@ -57,13 +57,12 @@
         <h3>{{ item.title }}</h3>
         {{ item.category }}
         <br>
-        {{ item.price }}
+        {{ item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) }}
       </ion-label>
 
-      <!-- *ngIf="item.Type == 'movie'" -->
-      <ion-icon slot="end" name="videocam"></ion-icon>
-      <!-- <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type == 'game'" name="logo-game-controller-b"></ion-icon> -->
+      <ion-icon name="ice-cream" slot="end" *ngIf="item.category == 'Category 1'"></ion-icon>
+      <ion-icon name="beer" slot="end" *ngIf="item.category == 'Category 2'"></ion-icon>
+      <ion-icon name="pizza" slot="end" *ngIf="item.category == 'Category 3'"></ion-icon>
 
     </ion-item>
 
