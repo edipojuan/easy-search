@@ -64,6 +64,12 @@ export class AppComponent {
             url: '/settings',
             direct: 'forward',
             icon: 'albums'
+          },
+          {
+            title: 'Mapa',
+            url: '/map',
+            direct: 'forward',
+            icon: 'locate'
           }
         ]
       }
