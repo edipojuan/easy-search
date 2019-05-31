@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
+
+declare var google;
 
 @Component({
   selector: 'app-map',
@@ -7,38 +8,114 @@ import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
   styleUrls: ['./map.page.scss']
 })
 export class MapPage implements OnInit {
-  map: GoogleMap;
+  map;
 
   constructor() {}
 
   ngOnInit() {
+    this.detectBrowser();
     this.loadMap();
   }
 
   loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {
-          lat: 43.0741704,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
-      }
+    console.log('Google Maps API version: ' + google.maps.version);
+
+    const latLng = new google.maps.LatLng(-15.5625464, -56.073445899999996);
+
+    const mapOptions = {
+      center: latLng,
+      zoom: 18,
+      // mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId: 'satellite',
+      // mapTypeId: 'terrain',
+      heading: 90,
+      tilt: 45
+    };
+
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    debugger;
+
+    const locations = [
+      new google.maps.LatLng(-15.568601, -56.094145) /* despraiado */,
+      new google.maps.LatLng(-15.568642, -56.057323) /* moradaDoOuro */
+    ];
+
+    const markers = locations.map((location, i) => {
+      return new google.maps.Marker({
+        position: location,
+        map: this.map,
+        label: `Test ${i}`
+      });
     });
 
-    // const marker: Marker = this.map.addMarkerSync({
-    //   title: 'Ionic',
-    //   icon: 'blue',
-    //   animation: 'DROP',
-    //   position: {
-    //     lat: 43.0741904,
-    //     lng: -89.3809802
-    //   }
-    // });
+    const infoWindow = new google.maps.InfoWindow();
 
-    // marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-    //   alert('clicked');
-    // });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found.');
+          infoWindow.open(this.map);
+          this.map.setCenter(pos);
+        },
+        () => this.handleLocationError(true, infoWindow, this.map.getCenter())
+      );
+    } else {
+      this.handleLocationError(false, infoWindow, this.map.getCenter());
+    }
+
+    // this.autoRotate();
+    // this.map.setHeading(0 + 90);
+    let heading = 90;
+
+    window.setInterval((x) => {
+      console.log(heading);
+      heading = heading === 0 ? 90 : 0;
+      this.map.setHeading(heading);
+    }, 2000);
+  }
+
+  handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? 'Error: The Geolocation service failed.'
+        : 'Error: Your browser doesn\'t support geolocation.'
+    );
+    infoWindow.open(this.map);
+  }
+
+  detectBrowser() {
+    const useragent = navigator.userAgent;
+    const mapdiv = document.getElementById('map');
+
+    if (
+      useragent.indexOf('iPhone') !== -1 ||
+      useragent.indexOf('Android') !== -1
+    ) {
+      mapdiv.style.width = '100%';
+      mapdiv.style.height = '100%';
+    } else {
+      mapdiv.style.width = '600px';
+      mapdiv.style.height = '800px';
+    }
+  }
+
+  rotate90() {
+    const heading = 0; // this.map.getHeading() || 0;
+    this.map.setHeading(heading + 90);
+  }
+
+  autoRotate() {
+    // Determine if we're showing aerial imagery.
+    if (this.map.getTilt() !== 0) {
+      window.setInterval(this.rotate90, 3000);
+    }
   }
 }
