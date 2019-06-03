@@ -20,7 +20,7 @@ export class MapPage implements OnInit {
   loadMap() {
     console.log('Google Maps API version: ' + google.maps.version);
 
-    const latLng = new google.maps.LatLng(-15.5625464, -56.073445899999996);
+    const latLng = new google.maps.LatLng(-15.568601, -56.094145);
 
     const mapOptions = {
       center: latLng,
@@ -34,19 +34,15 @@ export class MapPage implements OnInit {
 
     this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    debugger;
-
-    const locations = [
+    const positions = [
       new google.maps.LatLng(-15.568601, -56.094145) /* despraiado */,
       new google.maps.LatLng(-15.568642, -56.057323) /* moradaDoOuro */
     ];
 
-    const markers = locations.map((location, i) => {
-      return new google.maps.Marker({
-        position: location,
-        map: this.map,
-        label: `Test ${i}`
-      });
+    const map = this.map;
+
+    const markers = positions.map((position, i) => {
+      return new google.maps.Marker({ position, map, label: `Test ${i}` });
     });
 
     const infoWindow = new google.maps.InfoWindow();

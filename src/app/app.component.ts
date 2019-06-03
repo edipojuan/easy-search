@@ -26,7 +26,8 @@ export class AppComponent {
         itens: [
           {
             title: 'Home',
-            url: '/home-results',
+            // url: '/home-results',
+            url: '',
             direct: 'root',
             icon: 'home'
           },
@@ -49,7 +50,8 @@ export class AppComponent {
         itens: [
           {
             title: 'Sobre',
-            url: '/home-results',
+            // url: '/home-results',
+            url: '',
             direct: 'root',
             icon: 'information-circle-outline'
           },

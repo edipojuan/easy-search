@@ -316,11 +316,6 @@
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/google-maps@^5.5.0":
-  version "5.5.0"
-  resolved "https://registry.npmjs.org/@ionic-native/google-maps/-/google-maps-5.5.0.tgz#02537e04bb0d01d5580f936d8ccce6745188d90a"
-  integrity sha512-+sCaB7cLR35ApsOyYSfwDX2ZTO2ItOI6FHkgTQ2rzOA1DVJ9rlU8HDL6jYBUhq+aDe3lhCPexSOryeBynaSvpQ==
-
 "@ionic-native/splash-screen@^5.0.0":
   version "5.6.1"
   resolved "https://registry.npmjs.org/@ionic-native/splash-screen/-/splash-screen-5.6.1.tgz#c04d88799479f1d1a7dad753ffe0eb49e855202c"

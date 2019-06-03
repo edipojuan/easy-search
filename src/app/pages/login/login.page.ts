@@ -34,8 +34,6 @@ export class LoginPage implements OnInit {
       email: [null, Validators.compose([Validators.required])],
       password: [null, Validators.compose([Validators.required])]
     });
-
-    this.goToHome();
   }
 
   async forgotPass() {
