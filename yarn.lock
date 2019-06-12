@@ -188,13 +188,6 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/http@^7.2.2":
-  version "7.2.15"
-  resolved "https://registry.npmjs.org/@angular/http/-/http-7.2.15.tgz#a32bea9e67e99eef88150085aeebbe7aeecd39eb"
-  integrity sha512-TR7PEdmLWNIre3Zn8lvyb4lSrvPUJhKLystLnp4hBMcWsJqq5iK8S3bnlR4viZ9HMlf7bW7+Hm4SI6aB3tdUtw==
-  dependencies:
-    tslib "^1.9.0"
-
 "@angular/language-service@~7.2.2":
   version "7.2.15"
   resolved "https://registry.npmjs.org/@angular/language-service/-/language-service-7.2.15.tgz#b2ba33e472dc5e530047c408ff7a35deba4427b8"
@@ -339,12 +332,12 @@
     tslib "^1.9.0"
     typescript "^3.2.4"
 
-"@ionic/angular@^4.0.0":
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/@ionic/angular/-/angular-4.4.2.tgz#9b4e23fb4e76b218332c63e5cb7a9fafcaaec586"
-  integrity sha512-ihjhvPFXqDS3HURvAfSH5vMlCersP08pnxfek36IOKX1sYOYq6VI/2miTv+jr7GuIZlmyZan0PibiRZPg7DIqA==
+"@ionic/angular@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.npmjs.org/@ionic/angular/-/angular-4.5.0.tgz#fdd67d455720fd6b5e1f5021d96bc33e6c74154e"
+  integrity sha512-lUrswumErqCqu0Uaf7++8lghYw4Hg0IPoEtEE+TzQJaADTVpnlJx9vliBVUP87tDL/LhGdZWS+r7mksOC2jmVQ==
   dependencies:
-    "@ionic/core" "4.4.2"
+    "@ionic/core" "4.5.0"
     tslib "^1.9.3"
 
 "@ionic/cli-framework@1.6.0":
@@ -370,10 +363,10 @@
     wrap-ansi "^4.0.0"
     write-file-atomic "^2.3.0"
 
-"@ionic/core@4.4.2":
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/@ionic/core/-/core-4.4.2.tgz#7bcadf125b77e08d2166581a00e1bcb35976547f"
-  integrity sha512-B6cA8Nz29hB+FxRHZ78em1Zlo2r1NqTl6HfiIA8lQtfI9tj4VQe7R1mF/Qb9jaati1U2k4eaHbxiwJ50Hez/4w==
+"@ionic/core@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.npmjs.org/@ionic/core/-/core-4.5.0.tgz#dbfb9b1f3aaf981936894b0fd94af110946b4834"
+  integrity sha512-vck9hBkIVtWrLYERgQ5utpyCoSvSJo7ViQtoaZLwdjz7Pz2RzTgYEiLEU1No5oY8TR1amOq1yxAHDvM7qsFx2Q==
   dependencies:
     ionicons "4.5.8"
 
